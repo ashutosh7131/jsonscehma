@@ -1,0 +1,887 @@
+{
+  
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "definitions": {
+    "cardEntryModeCode": {
+      "description": "Card Entry Mode Code ENUM",
+      "enum": [
+        "ICC",
+        "MAGSWIPE",
+        "STANDALONE",
+        "ICCFALLBACK",
+        "MANUAL",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "creditOfflineUpdateCode": {
+      "description": "Credit Off Line Update Code ENUM",
+      "enum": [
+        "",
+        "Y",
+        "N"
+      ],
+      "type": "string"
+    },
+    "customerInfoType": {
+      "additionalProperties": false,
+      "description": "Customer Info",
+      "properties": {
+        "address1": {
+          "description": "Address Line 1",
+          "type": "string"
+        },
+        "address2": {
+          "description": "Address Line 2",
+          "type": "string"
+        },
+        "checkForRewardsAccount": {
+          "description": "Check Rewards Account Flag",
+          "type": "boolean"
+        },
+        "city": {
+          "description": "City",
+          "type": "string"
+        },
+        "country": {
+          "description": "Country",
+          "type": "string"
+        },
+        "customerLinkCode": {
+          "description": "Customer Link Code",
+          "type": "string"
+        },
+        "customerLinkType": {
+          "description": "Customer Link Type",
+          "type": "string"
+        },
+        "customerReturnLinkCode": {
+          "description": "Customer Returns Link Code",
+          "type": "string"
+        },
+        "eReceiptIndicator": {
+          "description": "Ereceipt Indicator",
+          "type": "integer"
+        },
+        "email": {
+          "description": "Email Address",
+          "type": "string"
+        },
+        "encryptedId": {
+          "description": "Encrypted Id",
+          "type": "string"
+        },
+        "firstName": {
+          "description": "First Name",
+          "type": "string"
+        },
+        "idSwiped": {
+          "description": "Id Swiped Flag",
+          "type": "boolean"
+        },
+        "idType": {
+          "description": "Id Type",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "Last Name",
+          "type": "string"
+        },
+        "lineItemNumber": {
+          "description": "Line Item Number",
+          "type": "number"
+        },
+        "marketingEmailIndicator": {
+          "description": "Marketing Email Indicator",
+          "type": "integer"
+        },
+        "phone": {
+          "description": "Phone Number",
+          "type": "string"
+        },
+        "shipToAddress1": {
+          "description": "Shipt TO Address 1",
+          "type": "string"
+        },
+        "shipToTaxAreaId": {
+          "description": "Ship To Tax Area Id",
+          "type": "integer"
+        },
+        "shipToaddress2": {
+          "description": "Shipt To Address 2",
+          "type": "string"
+        },
+        "shipTocity": {
+          "description": "Shipt To City",
+          "type": "string"
+        },
+        "shipTocountry": {
+          "description": "Ship To Country",
+          "type": "string"
+        },
+        "shipTostate": {
+          "description": "Ship To State",
+          "type": "string"
+        },
+        "shipTozipCode": {
+          "description": "Ship To Zip Code",
+          "type": "string"
+        },
+        "shipTozipCodeExt": {
+          "description": "Ship To Zip Code Ext",
+          "type": "string"
+        },
+        "shippingDate": {
+          "description": "Shipping Date",
+          "format": "date-time",
+          "type": "string"
+        },
+        "shippingDeliveryTerms": {
+          "description": "Shipping Delivery terms",
+          "type": "string"
+        },
+        "shippingOverrideReason": {
+          "description": "Shipping Override Reason",
+          "type": "string"
+        },
+        "shippingTransportMode": {
+          "description": "Shipping Transport Mode",
+          "type": "string"
+        },
+        "state": {
+          "description": "State",
+          "type": "string"
+        },
+        "zipCode": {
+          "description": "Zip Code",
+          "type": "string"
+        },
+        "zipCodeExt": {
+          "description": "Zip Code Ext",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lineItemNumber"
+      ],
+      "type": "object"
+    },
+    "discountLineItemListType": {
+      "additionalProperties": false,
+      "properties": {
+        "DiscountLineItem": {
+          "$ref": "#/definitions/discountLineItemType",
+          "description": "Discount Line Item Type"
+        }
+      },
+      "type": "object"
+    },
+    "discountLineItemType": {
+      "additionalProperties": false,
+      "properties": {
+        "aaaGid": {
+          "description": "aaaGid",
+          "type": "number"
+        },
+        "amount": {
+          "description": "Amount",
+          "type": "number"
+        },
+        "discountSequenceNumber": {
+          "description": "Discount Sequence Number",
+          "type": "number"
+        },
+        "discounttype": {
+          "$ref": "#/definitions/discountTypeCode",
+          "description": "Type"
+        },
+        "promotionId": {
+          "description": "Promotion Id",
+          "type": "string"
+        },
+        "uniquePromotionCode": {
+          "description": "Unique Promotion Code",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "discountTypeCode": {
+      "description": "Discount Type Type ENUM",
+      "enum": [
+        "ITEM",
+        "COUPON",
+        "EMPLOYEE",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "downstreamSystemTypeCode": {
+      "description": "Downstream System Type Code ENUM",
+      "enum": [
+        "LOYALTYPLUS"
+      ],
+      "type": "string"
+    },
+    "encryptionTypeCode": {
+      "description": "Encryption Type Code ENUM",
+      "enum": [
+        "",
+        "C",
+        "T",
+        "G"
+      ],
+      "type": "string"
+    },
+    "entryMethodCode": {
+      "description": "Entry Method Code ENUM",
+      "enum": [
+        "KEY",
+        "SCAN",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "giftCardRequestTypeCode": {
+      "description": "Gift Card Request Type ENUM",
+      "enum": [
+        "ISSUE",
+        "RELOAD",
+        "REDEEM",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "receiptType": {
+      "description": "Receipt Type ENUM",
+      "enum": [
+        "GIFT",
+        "SALE",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "saleLineItemType": {
+      "additionalProperties": false,
+      "description": "Sale Transaction HDR Type",
+      "properties": {
+        "discountAmount": {
+          "description": "Discount Amount",
+          "type": "number"
+        },
+        "discountLineItemList": {
+          "$ref": "#/definitions/discountLineItemListType",
+          "description": "Discount Line Item List"
+        },
+        "encryptedGiftCardNumber": {
+          "description": "Encrypted Gift Card NUmber",
+          "type": "string"
+        },
+        "entryMethod": {
+          "description": "Entry Method Code",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/entryMethodCode"
+            },
+            {
+              "$ref": "#/definitions/typeCodeExtension"
+            }
+          ]
+        },
+        "extendedAmount": {
+          "description": "Entended Amount",
+          "type": "number"
+        },
+        "fulfillStoreID": {
+          "description": "Fulfill Store Id",
+          "type": "string"
+        },
+        "giftCardRequestType": {
+          "description": "Gift Card Request Type",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/giftCardRequestTypeCode"
+            },
+            {
+              "$ref": "#/definitions/typeCodeExtension"
+            }
+          ]
+        },
+        "giftReceiptPrinted": {
+          "description": "Gift Receipt Printed Flag",
+          "type": "boolean"
+        },
+        "itemId": {
+          "description": "Item Id",
+          "type": "string"
+        },
+        "lineItemNumber": {
+          "description": "Sales Transaction Sequence Number",
+          "type": "number"
+        },
+        "maskedGiftCardId": {
+          "description": "Masked Gift Card Id",
+          "type": "string"
+        },
+        "nonMerch": {
+          "description": "Non Merch Flag",
+          "type": "boolean"
+        },
+        "omniCode": {
+          "description": "Omni Code",
+          "type": "string"
+        },
+        "origBusinessDay": {
+          "description": "Orig Business Day",
+          "type": "string"
+        },
+        "origItemId": {
+          "description": "Orig Item Id",
+          "type": "string"
+        },
+        "origLineItemNumber": {
+          "description": "Orig Line Item Number",
+          "type": "string"
+        },
+        "origReceiptEntryMethod": {
+          "description": "Entry Method Code",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/entryMethodCode"
+            },
+            {
+              "$ref": "#/definitions/typeCodeExtension"
+            }
+          ]
+        },
+        "origReceiptType": {
+          "description": "Orig Receipt Type",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/receiptType"
+            },
+            {
+              "$ref": "#/definitions/typeCodeExtension"
+            }
+          ]
+        },
+        "origSequenceNumber": {
+          "description": "Orig Sequence NUmber",
+          "type": "number"
+        },
+        "origStoreId": {
+          "description": "Orig Store Id",
+          "type": "string"
+        },
+        "origWorkstationId": {
+          "description": "orig Workstation id",
+          "type": "string"
+        },
+        "originateStockOutReasonCode": {
+          "description": "Originate Stock Out Reason Code",
+          "type": "number"
+        },
+        "priceOverride": {
+          "description": "Origin Currency Code",
+          "type": "boolean"
+        },
+        "priceOverrideReasonCode": {
+          "description": "Prie Override Reason Code",
+          "type": "string"
+        },
+        "priceTypeCode": {
+          "description": "Priec Type Code",
+          "type": "number"
+        },
+        "quantity": {
+          "description": "Quantity",
+          "type": "number"
+        },
+        "returnReasonCode": {
+          "description": "Return Reason Code",
+          "type": "string"
+        },
+        "sellAmount": {
+          "description": "Sell Amount",
+          "type": "number"
+        },
+        "shippingCountryOfOrigin": {
+          "description": "Shipping Country Origin",
+          "type": "number"
+        },
+        "shippingFromCountry": {
+          "description": "Shipping from Country",
+          "type": "string"
+        },
+        "shippingIntrastatCode": {
+          "description": "Shipping Intra Stat Code",
+          "type": "string"
+        },
+        "shippingMass": {
+          "description": "Shipping Mass",
+          "type": "string"
+        },
+        "taxAmount": {
+          "description": "Tax Amount",
+          "type": "number"
+        },
+        "taxGroupId": {
+          "description": "Tax Group Id",
+          "type": "string"
+        },
+        "taxLineItemList": {
+          "$ref": "#/definitions/taxLineItemListType",
+          "description": "Tax Line Item List"
+        },
+        "taxOverride": {
+          "description": "Tax Override",
+          "type": "boolean"
+        },
+        "ticketAmount": {
+          "description": "Ticket Amount",
+          "type": "number"
+        },
+        "voided": {
+          "description": "Voided status flag",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "lineItemNumber",
+        "quantity"
+      ],
+      "type": "object"
+    },
+    "saleTransactionHDRType": {
+      "additionalProperties": false,
+      "description": "Sale Transaction HDR Type",
+      "properties": {
+        "authorizerId": {
+          "description": "Authorizer Id",
+          "type": "string"
+        },
+        "businessDate": {
+          "description": "business Date",
+          "format": "date-time",
+          "type": "string"
+        },
+        "cashierId": {
+          "description": "Store Cashier Id",
+          "type": "string"
+        },
+        "creditOfflineUpdate": {
+          "$ref": "#/definitions/creditOfflineUpdateCode",
+          "description": "Credit Offline Update Code"
+        },
+        "customerInfo": {
+          "$ref": "#/definitions/customerInfoType",
+          "description": "Customer Info"
+        },
+        "discountAmount": {
+          "description": "discount Amount",
+          "type": "number"
+        },
+        "downstreamSystemList": {
+          "description": "Down Stream System List",
+          "oneOf": [
+            {
+              "description": "Down Stream System Type Code",
+              "items": {
+                "$ref": "#/definitions/downstreamSystemTypeCode"
+              },
+              "type": "array"
+            },
+            {
+              "$ref": "#/definitions/typeCodeExtension"
+            }
+          ]
+        },
+        "employeeSaleId": {
+          "description": "Employee Sale Id",
+          "type": "string"
+        },
+        "endTime": {
+          "description": "end Time",
+          "format": "date-time",
+          "type": "string"
+        },
+        "filingCurrencyCode": {
+          "description": "Filing Currency Code",
+          "type": "string"
+        },
+        "filingCurrencyConversionFactor": {
+          "description": "Currency Conversion Factor",
+          "type": "number"
+        },
+        "grandTotalAmount": {
+          "description": "Grand Total Amount",
+          "type": "number"
+        },
+        "origCurrencyCode": {
+          "description": "Origin Currency Code",
+          "type": "string"
+        },
+        "originateBusinessDate": {
+          "description": "Originate Business Date",
+          "format": "date-time",
+          "type": "string"
+        },
+        "originateEntryType": {
+          "description": "Orginate Entry Type",
+          "type": "string"
+        },
+        "originateSequenceNumber": {
+          "description": "Originate Seq NUmber",
+          "type": "integer"
+        },
+        "originateStoreId": {
+          "description": "Orig Store Id",
+          "type": "string"
+        },
+        "originateWorkstationId": {
+          "description": "Originate Work Station Id",
+          "type": "string"
+        },
+        "reasonCode": {
+          "description": "Reason Code",
+          "type": "string"
+        },
+        "rewardsEligiblePurchaseStore": {
+          "description": "rewards Eligible Purchase Store Flag",
+          "type": "boolean"
+        },
+        "rewardsEligibleReturnStore": {
+          "description": "rewards Eligible Return Store Flag",
+          "type": "boolean"
+        },
+        "saleType": {
+          "description": "Sale Type",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/saleTransactionStatusCode"
+            },
+            {
+              "$ref": "#/definitions/typeCodeExtension"
+            }
+          ]
+        },
+        "sequenceNumber": {
+          "description": "Sales Transaction Sequence Number",
+          "type": "string"
+        },
+        "startTime": {
+          "description": "start time",
+          "format": "date-time",
+          "type": "string"
+        },
+        "status": {
+          "description": "Sale Status",
+          "type": "string"
+        },
+        "storeCurrencyCode": {
+          "description": "Store currency Code",
+          "type": "string"
+        },
+        "storeId": {
+          "description": "Sales Transaction Sequence Number",
+          "type": "string"
+        },
+        "storeType": {
+          "description": "Store Type",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/storeTypeCode"
+            },
+            {
+              "$ref": "#/definitions/typeCodeExtension"
+            }
+          ]
+        },
+        "subtotalAmount": {
+          "description": "Sub Total Amount",
+          "type": "number"
+        },
+        "taxAmount": {
+          "description": "Tax Amount",
+          "type": "number"
+        },
+        "taxExemptId": {
+          "description": "Tax Exempt Id",
+          "type": "string"
+        },
+        "tenderList": {
+          "$ref": "#/definitions/tenderListType",
+          "description": "Tender List"
+        },
+        "totalAmount": {
+          "description": "Total Amount",
+          "type": "number"
+        },
+        "workstationId": {
+          "description": "Work Station Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sequenceNumber",
+        "storeId",
+        "rewardsEligiblePurchaseStore",
+        "rewardsEligibleReturnStore",
+        "workstationId",
+        "businessDate"
+      ],
+      "type": "object"
+    },
+    "saleTransactionItemsType": {
+      "additionalProperties": false,
+      "description": "Sale Line Items",
+      "properties": {
+        "saleLineItem": {
+          "description": "Sale Transaction HDR Type",
+          "items": {
+            "$ref": "#/definitions/saleLineItemType"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "saleTransactionStatusCode": {
+      "description": "Sale Transaction Status Code ENUM",
+      "enum": [
+        "COMPLETE",
+        "CANCELLED",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "saleTransactionType": {
+      "additionalProperties": false,
+      "description": "Sale Transaction Type",
+      "properties": {
+        "SaleTransactionItems": {
+          "$ref": "#/definitions/saleTransactionItemsType",
+          "description": "Sale Transaction Items Type"
+        },
+        "saleTransactionHDRType": {
+          "$ref": "#/definitions/saleTransactionHDRType",
+          "description": "Sale Transaction HDR Type"
+        }
+      },
+      "required": [
+        "saleTransactionHDRType"
+      ],
+      "type": "object"
+    },
+    "saleTransactionTypeCode": {
+      "description": "Sales Transaction Type Code ENUM",
+      "enum": [
+        "SALE",
+        "RETURN",
+        "NO_SALE",
+        "BALANCE_INQUIRY",
+        "PAY_IN",
+        "PAY_OUT",
+        "OPEN_STORE",
+        "CLOSE_STORE",
+        "OPEN_REGISTER",
+        "CLOSE_REGISTER",
+        "REDEEM",
+        "PICKUP",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "storeTypeCode": {
+      "description": "Store Type ENUM",
+      "enum": [
+        "BRK",
+        "WEB"
+      ],
+      "type": "string"
+    },
+    "taxLineItemListType": {
+      "additionalProperties": false,
+      "properties": {
+        "taxLineItem": {
+          "$ref": "#/definitions/taxLineItemType",
+          "description": "Tax Line Item Type"
+        }
+      },
+      "type": "object"
+    },
+    "taxLineItemType": {
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "description": "Amount",
+          "type": "string"
+        },
+        "authority": {
+          "description": "Authority",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name",
+          "type": "string"
+        },
+        "rate": {
+          "description": "Rate",
+          "type": "string"
+        },
+        "taxLinetype": {
+          "description": "Type",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "tenderListType": {
+      "additionalProperties": false,
+      "properties": {
+        "tender": {
+          "description": "Tender Type",
+          "items": {
+            "$ref": "#/definitions/tenderType"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "tenderType": {
+      "additionalProperties": false,
+      "description": "Sales tender types",
+      "properties": {
+        "accountName": {
+          "description": "Account Name",
+          "type": "string"
+        },
+        "cardAuthMethod": {
+          "description": "Card Auth Method",
+          "type": "string"
+        },
+        "cardAuthReturnCode": {
+          "description": "Card Auth Return Code",
+          "type": "string"
+        },
+        "cardEntryMode": {
+          "$ref": "#/definitions/cardEntryModeCode",
+          "description": "Card Entry Mode"
+        },
+        "encryptedCardNumber": {
+          "description": "Encrypted card Number",
+          "type": "string"
+        },
+        "encryptedCheckAccountNumber": {
+          "description": "Encrypted Check Account Number",
+          "type": "number"
+        },
+        "encryptedCheckRoutingNumber": {
+          "description": "Encrypted Check Routing Number",
+          "type": "number"
+        },
+        "encryptedExpDate": {
+          "description": "Encrypted Exp Date",
+          "format": "date-time",
+          "type": "string"
+        },
+        "encryptionType": {
+          "$ref": "#/definitions/encryptionTypeCode",
+          "description": "Encryption Type"
+        },
+        "foreignTenderAmount": {
+          "description": "Foreign Tender Amount",
+          "type": "number"
+        },
+        "foreignTenderCurrencyCode": {
+          "description": "Foreign Tender Currency Code",
+          "type": "string"
+        },
+        "hashedCardNumber": {
+          "description": "Hashed Card Number",
+          "type": "string"
+        },
+        "lineItemNumber": {
+          "description": "Line Item Number",
+          "type": "number"
+        },
+        "maskedCardNumber": {
+          "description": "Masked Card Number",
+          "type": "string"
+        },
+        "tenderAmount": {
+          "description": "Tender Amount",
+          "type": "number"
+        },
+        "tenderExchangeRate": {
+          "description": "Tender Exchange Rate",
+          "type": "number"
+        },
+        "tenderNumber": {
+          "description": "Tender Number",
+          "type": "number"
+        },
+        "tenderType": {
+          "description": "Tender Type",
+          "type": "string"
+        },
+        "tenderTypeId": {
+          "description": "Tender Type Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lineItemNumber"
+      ],
+      "type": "object"
+    },
+    "typeCodeExtension": {
+      "description": "Type Code Extensions",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "correlationId": {
+      "description": "The correlation id of the message",
+      "type": "string"
+    },
+    "messageTimestamp": {
+      "description": "The timestamp of the message",
+      "format": "date-time",
+      "type": "string"
+    },
+    "saleTransactionMessage": {
+      "additionalProperties": false,
+      "description": "Sale Transaction Message",
+      "properties": {
+        "saleTransaction": {
+          "$ref": "#/definitions/saleTransactionType",
+          "description": "Sale Transactions"
+        }
+      },
+      "required": [
+        "saleTransaction"
+      ],
+      "type": "object"
+    },
+    "sourceSystemId": {
+      "description": "The system which produced the message",
+      "type": "string"
+    },
+    "triggerSystemId": {
+      "description": "The system which initially triggered the action",
+      "type": "string"
+    }
+  },
+  "required": [
+    "correlationId",
+    "sourceSystemId",
+    "triggerSystemId",
+    "messageTimestamp",
+    "saleTransactionMessage"
+  ],
+  "title": "SalesTransactions",
+  "type": "object"
+}
